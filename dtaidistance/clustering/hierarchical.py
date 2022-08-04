@@ -70,7 +70,7 @@ class Hierarchical:
         cluster_idx = dict()
         self.dists_options['only_triu'] = True
         dists = self.dists_fun(series, **self.dists_options)
-        min_value = np.min(dists)
+        min_value = np.nanmin(dists)
         min_idxs = np.argwhere(dists == min_value)
         if self.order_hook:
             min_idx = self.order_hook(min_idxs)
@@ -117,7 +117,7 @@ class Hierarchical:
                 pbar.update(1)
             # min_idx = np.unravel_index(np.argmin(dists), dists.shape)
             # min_value = dists[min_idx]
-            min_value = np.min(dists)
+            min_value = np.nanmin(dists)
             # if np.isinf(min_value):
             #     break
             min_idxs = np.argwhere(dists == min_value)
